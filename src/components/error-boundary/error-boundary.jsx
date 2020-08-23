@@ -3,7 +3,7 @@ import ErrorIndicator from "../error-indicator/error-indicator";
 
 /**
  * @description
- *  Helper element to handle render errors
+ *  Wrapper component for handling render errors
  */
 class ErrorBoundary extends Component {
   state = {
@@ -18,8 +18,7 @@ class ErrorBoundary extends Component {
     if (this.state.hasError) {
       return <ErrorIndicator />;
     }
-
-    return <React.Fragment>{this.props.children}</React.Fragment>;
+    return this.props.children;
   }
 }
 
