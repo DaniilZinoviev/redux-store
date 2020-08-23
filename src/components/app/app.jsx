@@ -1,23 +1,23 @@
 import React from "react";
-import withBookService from "../hoc/withBookService";
-import connect from "react-redux/lib/connect/connect";
+import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
+import HomePage from "../pages/home-page";
+import CartPage from "../pages/cart-page";
+import NotFoundPage from "../pages/not-found-page";
 
 /**
  * @description
  *  Main application class
  */
-const App = ({ getBooks }) => {
+const App = () => {
   return (
     <div>
-      <h2>App</h2>
+      <Switch>
+        <Route path="/" exact component={HomePage} />
+        <Route path="/cart" component={CartPage} />
+        <Route component={NotFoundPage} />
+      </Switch>
     </div>
   );
 };
 
-const mapServiceToProps = ({ getBooks }) => {
-  return {
-    getBooks,
-  };
-};
-
-export default withBookService(mapServiceToProps)(App);
+export default App;
