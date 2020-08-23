@@ -1,23 +1,23 @@
 import React from "react";
-import ErrorBoundary from "../error-boundary/error-boundary";
-import BookServiceContext from "../book-service-context/book-service-context";
-import BookService from "../../services/book-service";
+import withBookService from "../hoc/withBookService";
+import connect from "react-redux/lib/connect/connect";
 
 /**
  * @description
  *  Main application class
  */
-const App = () => {
-  const bookService = new BookService();
+const App = ({ getBooks }) => {
   return (
-    <ErrorBoundary>
-      <BookServiceContext.Provider value={bookService}>
-        <div>
-          <h2>App</h2>
-        </div>
-      </BookServiceContext.Provider>
-    </ErrorBoundary>
+    <div>
+      <h2>App</h2>
+    </div>
   );
 };
 
-export default App;
+const mapServiceToProps = ({ getBooks }) => {
+  return {
+    getBooks,
+  };
+};
+
+export default withBookService(mapServiceToProps)(App);
