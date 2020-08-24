@@ -8,11 +8,13 @@ const CartTable = () => {
       <h3>Your order</h3>
       <table className="table">
         <thead>
-          <th>#</th>
-          <th>Item</th>
-          <th>Count</th>
-          <th>Price</th>
-          <th>Actions</th>
+          <tr>
+            <th>#</th>
+            <th>Item</th>
+            <th>Count</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
         </thead>
 
         <tbody>
