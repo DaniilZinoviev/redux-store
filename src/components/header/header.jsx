@@ -1,19 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./header.scss";
 
 const Header = ({ count, total }) => {
   return (
     <header className="header row">
-      <a href="#" className="header--logo text-dark">
+      <Link to="/" className="header--logo text-dark">
         ReStore
-      </a>
-      <a href="#" className="header--cart">
+      </Link>
+      <Link to="/cart" className="header--cart">
         <i className="fa text-info fa-shopping-cart header--cart-icon"></i>
         <span className="text-dark">
           {count} items (${total})
         </span>
-      </a>
+      </Link>
     </header>
   );
 };

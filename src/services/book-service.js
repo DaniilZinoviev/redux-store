@@ -22,10 +22,10 @@ class BookService {
   ];
 
   /**
-   * @returns {any} Books array
+   * @returns {Promise<Array>} Books array
    */
   getAllBooks() {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(this.data);
       }, 700);
