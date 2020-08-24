@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import BookListItem from "../book-list-item/book-list-item";
 import withBookService from "../hoc/withBookService";
 import * as actions from "../../actions";
+import { compose } from "../../utils";
+
+import "./books-list.scss";
 
 const BookList = ({ books, bookService, booksLoaded }) => {
   useEffect(() => {
@@ -12,11 +15,11 @@ const BookList = ({ books, bookService, booksLoaded }) => {
   }, [bookService, booksLoaded]);
 
   return (
-    <div>
+    <ul className="book-list">
       {books.map((book) => (
         <BookListItem book={book} key={book.id} />
       ))}
-    </div>
+    </ul>
   );
 };
 
@@ -28,4 +31,7 @@ const mapStateToProps = ({ books }) => {
   return { books };
 };
 
-export default withBookService()(connect(mapStateToProps, actions)(BookList));
+export default compose(
+  withBookService(),
+  connect(mapStateToProps, actions)
+)(BookList);

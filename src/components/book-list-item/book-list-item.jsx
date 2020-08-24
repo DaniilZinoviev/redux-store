@@ -1,11 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import "./book-list-item.scss";
+
 const BookListItem = ({ book }) => {
-  const { title, author } = book;
+  const { title, author, price, image } = book;
   return (
-    <div>
-      <b>{title}</b> (<span>{author}</span>)
+    <div className="book-list-item">
+      <div className="book-image">
+        <img src={image} alt="Book" />
+      </div>
+      <div className="book-details">
+        <a href="#" className="book-title">
+          {title}
+        </a>
+        <div className="book-author">{author}</div>
+        <div className="book-price">${price}</div>
+        <button className="btn btn-info">Add to cart</button>
+      </div>
     </div>
   );
 };

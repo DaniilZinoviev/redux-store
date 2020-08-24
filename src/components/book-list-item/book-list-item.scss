@@ -1,0 +1,22 @@
+.book-list-item {
+  display: flex;
+  margin-bottom: 25px;
+  .book-image {
+    flex-shrink: 0;
+    width: 125px;
+    margin-right: 25px;
+    img {
+      max-width: 100%;
+    }
+  }
+  .book-details {
+    line-height: 1.7;
+    padding-bottom: 25px;
+  }
+  .book-title {
+    font-size: 1.2rem;
+  }
+  .book-price {
+    font-size: 1.4rem;
+  }
+}
