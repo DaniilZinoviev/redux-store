@@ -7,28 +7,28 @@ import * as actions from "../../actions";
 import { compose } from "../../utils";
 
 import "./books-list.scss";
+import Spinner from "../spinner/spinner";
 
-const BookList = ({ books, bookService, booksLoaded }) => {
+const BookList = ({ books, loading, bookService, booksLoaded }) => {
   useEffect(() => {
-    let books = bookService.getAllBooks();
-    booksLoaded(books);
+    bookService.getAllBooks().then((books) => {
+      booksLoaded(books);
+    });
   }, [bookService, booksLoaded]);
 
-  return (
-    <ul className="book-list">
-      {books.map((book) => (
-        <BookListItem book={book} key={book.id} />
-      ))}
-    </ul>
-  );
+  let content = books.map((book) => <BookListItem book={book} key={book.id} />);
+  return <ul className="book-list">{loading ? <Spinner /> : content}</ul>;
 };
 
 BookList.propTypes = {
   books: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-const mapStateToProps = ({ books }) => {
-  return { books };
+const mapStateToProps = ({ books, loading }) => {
+  return {
+    books,
+    loading,
+  };
 };
 
 export default compose(
