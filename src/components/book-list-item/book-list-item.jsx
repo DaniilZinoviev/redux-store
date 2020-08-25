@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import "./book-list-item.scss";
 
-const BookListItem = ({ book }) => {
+const BookListItem = ({ book, onAddToCart }) => {
   const { title, author, price, image } = book;
   return (
     <div className="book-list-item">
@@ -16,7 +16,9 @@ const BookListItem = ({ book }) => {
         </a>
         <div className="book-author">{author}</div>
         <div className="book-price">${price}</div>
-        <button className="btn btn-info">Add to cart</button>
+        <button onClick={onAddToCart} className="btn btn-info">
+          Add to cart
+        </button>
       </div>
     </div>
   );

@@ -25,3 +25,10 @@ export const fetchBooks = (bookService, dispatch) => () => {
     .then((books) => dispatch(booksLoaded(books)))
     .catch((message) => dispatch(booksError(message)));
 };
+
+export const addToCart = (id) => {
+  return {
+    type: "ADD_BOOK_TO_CART",
+    payload: id,
+  };
+};
