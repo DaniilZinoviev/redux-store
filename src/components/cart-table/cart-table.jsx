@@ -2,32 +2,36 @@ import React from "react";
 import { connect } from "react-redux";
 
 import "./cart-table.scss";
-import { addToCart } from "../../actions";
+import {
+  addBookToCart,
+  deleteBookFromCart,
+  removeBookFromCart,
+} from "../../actions";
 
 const CartTable = ({ items, total, onDecrement, onIncrement, onDelete }) => {
   const ResultRow = (item, idx) => {
-    const { id, title, count, price } = item;
+    const { id, title, count, total } = item;
     return (
       <tr key={id}>
         <td>{idx + 1}</td>
         <td>{title}</td>
         <td>{count}</td>
-        <td>${price}</td>
+        <td>${total}</td>
         <td className="text-right">
           <button
-            onClick={onDecrement}
+            onClick={() => onDecrement(id)}
             className="btn btn-outline-warning btn-sm mx-1"
           >
             <i className="fa fa-minus"></i>
           </button>
           <button
-            onClick={onIncrement}
+            onClick={() => onIncrement(id)}
             className="btn btn-outline-success btn-sm mx-1"
           >
             <i className="fa fa-plus"></i>
           </button>
           <button
-            onClick={onDelete}
+            onClick={() => onDelete(id)}
             className="btn btn-outline-danger btn-sm mx-1"
           >
             <i className="fa fa-trash"></i>
@@ -66,15 +70,11 @@ const mapStateToProps = ({ cartItems, orderTotal }) => {
   };
 };
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onDecrement: (id) => {
-      console.log(`onDecrement(${id})`);
-    },
-    onIncrement: addToCart,
-    onDelete: (id) => {
-      console.log(`onDelete(${id})`);
-    },
+    onDecrement: (id) => dispatch(removeBookFromCart(id)),
+    onIncrement: (id) => dispatch(addBookToCart(id)),
+    onDelete: (id) => dispatch(deleteBookFromCart(id)),
   };
 };
 

@@ -18,17 +18,31 @@ export const booksError = (error) => {
   };
 };
 
+export const addBookToCart = (id) => {
+  return {
+    type: "ADD_BOOK_TO_CART",
+    payload: id,
+  };
+};
+
+export const removeBookFromCart = (id) => {
+  return {
+    type: "REMOVE_BOOK_FROM_CART",
+    payload: id,
+  };
+};
+
+export const deleteBookFromCart = (id) => {
+  return {
+    type: "DELETE_BOOK_FROM_CART",
+    payload: id,
+  };
+};
+
 export const fetchBooks = (bookService, dispatch) => () => {
   dispatch(booksRequested());
   bookService
     .getAllBooks()
     .then((books) => dispatch(booksLoaded(books)))
     .catch((message) => dispatch(booksError(message)));
-};
-
-export const addToCart = (id) => {
-  return {
-    type: "ADD_BOOK_TO_CART",
-    payload: id,
-  };
 };

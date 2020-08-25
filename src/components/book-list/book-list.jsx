@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import BookListItem from "../book-list-item/book-list-item";
 import withBookService from "../hoc/withBookService";
-import { fetchBooks, addToCart } from "../../actions";
+import { fetchBooks, addBookToCart } from "../../actions";
 import { compose } from "../../utils";
 
 import "./books-list.scss";
@@ -58,7 +58,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
   return {
     fetchBooks: fetchBooks(bookService, dispatch),
-    onAddToCart: (id) => dispatch(addToCart(id)),
+    onAddToCart: (id) => dispatch(addBookToCart(id)),
   };
 };
 
