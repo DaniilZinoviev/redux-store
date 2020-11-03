@@ -1,8 +1,30 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
 .cart-table {
   &--total {
     text-align: right;
     font-weight: bold;
     font-size: 1.3rem;
     padding: 0.5rem;
+  }
+
+  @include bp-rev($md) {
+    thead {
+      display: none;
+    }
+    tr {
+      display: block;
+      margin-bottom: 15px;
+    }
+    td {
+      display: block;
+      text-align: right;
+      &::before {
+        content: attr(data-title);
+        display: inline-block;
+        float: left;
+      }
+    }
   }
 }

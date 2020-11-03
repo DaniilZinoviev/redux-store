@@ -13,11 +13,11 @@ const CartTable = ({ items, total, onDecrement, onIncrement, onDelete }) => {
     const { id, title, count, total } = item;
     return (
       <tr key={id}>
-        <td>{idx + 1}</td>
-        <td>{title}</td>
-        <td>{count}</td>
-        <td>${total}</td>
-        <td className="text-right">
+        <td className="d-none d-md-table-cell">{idx + 1}</td>
+        <td data-title="Item">{title}</td>
+        <td data-title="Count">{count}</td>
+        <td data-title="Price">${total}</td>
+        <td className="text-right" data-title="Actions">
           <button
             onClick={() => (count > 1 ? onDecrement(id) : null)}
             className="btn btn-outline-warning btn-sm mx-1"
@@ -54,7 +54,7 @@ const CartTable = ({ items, total, onDecrement, onIncrement, onDelete }) => {
               <th>Item</th>
               <th>Count</th>
               <th>Price</th>
-              <th>Actions</th>
+              <th className="text-right">Actions</th>
             </tr>
           </thead>
 
