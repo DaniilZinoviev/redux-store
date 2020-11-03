@@ -12,15 +12,16 @@ import ErrorIndicator from "../error-indicator/error-indicator";
 
 const BookList = ({ books, onAddToCart }) => {
   return (
-    <ul className="book-list">
+    <div className="book-list row">
       {books.map((book) => (
-        <BookListItem
-          book={book}
-          key={book.id}
-          onAddToCart={() => onAddToCart(book.id)}
-        />
+        <div className="col-lg-4 col-md-6" key={book.id}>
+          <BookListItem
+            book={book}
+            onAddToCart={() => onAddToCart(book.id)}
+          />
+        </div>
       ))}
-    </ul>
+    </div>
   );
 };
 

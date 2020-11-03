@@ -11,7 +11,7 @@ const BookListItem = ({ book, onAddToCart }) => {
         <img src={image} alt="Book" />
       </div>
       <div className="book-details">
-        <a href="#" className="book-title">
+        <a href="#" className="book-title h3">
           {title}
         </a>
         <div className="book-author">{author}</div>
