@@ -14,7 +14,7 @@ import "./app.scss";
 const App = () => {
   return (
     <main role="main" className="container">
-      <Header count={5} total={210} />
+      <Header />
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/cart" component={CartPage} />

@@ -20,4 +20,13 @@
       font-size: 1.75rem;
     }
   }
+  .badge {
+    position: absolute;
+    border-radius: 50%;
+    right: 2px;
+    top: -10px;
+    font-size: 0.8rem;
+    font-family: sans-serif;
+    line-height: 1.2;
+  }
 }

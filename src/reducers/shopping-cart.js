@@ -1,3 +1,28 @@
+const updateShoppingCart = (state, action) => {
+  if (state === undefined) {
+    return {
+      cartItems: [],
+      orderTotal: 0,
+    };
+  }
+  switch (action.type) {
+    case "ADD_BOOK_TO_CART":
+      return updateOrder(state, action.payload, 1);
+
+    case "REMOVE_BOOK_FROM_CART":
+      return updateOrder(state, action.payload, -1);
+
+    case "DELETE_BOOK_FROM_CART":
+      const item = state.shoppingCart.cartItems.find(
+        ({ id }) => id === action.payload
+      );
+      return updateOrder(state, action.payload, -item.count);
+
+    default:
+      return state.shoppingCart;
+  }
+};
+
 const updateCartItem = (book, item = {}, quantity) => {
   let { id = book.id, title = book.title, count = 0, total = 0 } = item;
   return {
@@ -39,31 +64,6 @@ const updateOrder = (state, bookId, quantity) => {
     cartItems: newCartItems,
     orderTotal: getCartItemsTotal(newCartItems),
   };
-};
-
-const updateShoppingCart = (state, action) => {
-  if (state === undefined) {
-    return {
-      cartItems: [],
-      orderTotal: 0,
-    };
-  }
-  switch (action.type) {
-    case "ADD_BOOK_TO_CART":
-      return updateOrder(state, action.payload, 1);
-
-    case "REMOVE_BOOK_FROM_CART":
-      return updateOrder(state, action.payload, -1);
-
-    case "DELETE_BOOK_FROM_CART":
-      const item = state.shoppingCart.cartItems.find(
-        ({ id }) => id === action.payload
-      );
-      return updateOrder(state, action.payload, -item.count);
-
-    default:
-      return state.shoppingCart;
-  }
 };
 
 export default updateShoppingCart;
