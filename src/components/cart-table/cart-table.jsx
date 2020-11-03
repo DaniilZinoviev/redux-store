@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 
 import "./cart-table.scss";
@@ -41,24 +41,35 @@ const CartTable = ({ items, total, onDecrement, onIncrement, onDelete }) => {
     );
   };
 
+  let content;
+  if (items.length <= 0) {
+    content = <p>Your cart is empty.</p>;
+  } else {
+    content = (
+      <Fragment>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Item</th>
+              <th>Count</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>{items.map(ResultRow)}</tbody>
+        </table>
+
+        <div className="cart-table--total">Total: ${total}</div>
+      </Fragment>
+    );
+  }
+
   return (
     <div className="cart-table">
-      <h3>Your order</h3>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Item</th>
-            <th>Count</th>
-            <th>Price</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-
-        <tbody>{items.map(ResultRow)}</tbody>
-      </table>
-
-      <div className="cart-table--total">Total: ${total}</div>
+      <h3>Your cart</h3>
+      {content}
     </div>
   );
 };
