@@ -19,7 +19,7 @@ const CartTable = ({ items, total, onDecrement, onIncrement, onDelete }) => {
         <td>${total}</td>
         <td className="text-right">
           <button
-            onClick={() => onDecrement(id)}
+            onClick={() => (count > 1 ? onDecrement(id) : null)}
             className="btn btn-outline-warning btn-sm mx-1"
           >
             <i className="fa fa-minus"></i>
