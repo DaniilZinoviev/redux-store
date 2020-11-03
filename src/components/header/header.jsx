@@ -7,7 +7,7 @@ import "./header.scss";
 const Header = ({ count, total }) => {
   return (
     <header className="header row">
-      <Link to="/" className="header--logo text-dark">
+      <Link to="/" className="header--logo h1 text-dark">
         Redux Store
       </Link>
       <Link to="/cart" className="header--cart d-flex">

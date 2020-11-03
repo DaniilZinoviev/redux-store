@@ -1,3 +1,6 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
 .header {
   margin-bottom: 2rem;
   border-bottom: 1px solid #dbdbdb;
@@ -7,9 +10,15 @@
   align-items: center;
 
   .header--logo {
-    font-size: 3rem;
-    text-decoration: none;
     font-family: "Playfair Display", serif;
+    text-decoration: none;
+    font-size: 2.2rem;
+    @include bp($sm) {
+      font-size: 2.4rem;
+    }
+    @include bp($md) {
+      font-size: 3rem;
+    }
   }
   .header--cart {
     font-size: 1.3rem;
