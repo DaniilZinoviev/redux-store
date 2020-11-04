@@ -12,10 +12,6 @@ import Cache from "./services/cache-service";
 
 const cacheService = new Cache();
 
-console.log(
-  `cacheService.getAll()`,
-  cacheService.getAll()
-);
 const store = createStore(reducer, cacheService.getAll());
 store.subscribe(() => {
   cacheService.saveAll(
