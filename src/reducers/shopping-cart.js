@@ -1,5 +1,5 @@
 const updateShoppingCart = (state, action) => {
-  if (state === undefined) {
+  if (!state) {
     return {
       cartItems: [],
       orderTotal: 0,
